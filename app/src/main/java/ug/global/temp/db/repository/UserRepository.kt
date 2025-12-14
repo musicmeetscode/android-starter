@@ -5,19 +5,14 @@ import ug.global.temp.db.dao.UserDao
 import ug.global.temp.db.entities.User
 import java.util.Date
 
+import javax.inject.Inject
+
 /**
  * User Repository - Example repository demonstrating best practices
- * 
- * This repository:
- * - Extends BaseRepository for common CRUD operations
- * - Provides business logic methods
- * - Combines database operations
- * - Can integrate with network layer (Volley)
- * - Handles data transformation
- * 
- * Use this as a template for creating other repositories
  */
-class UserRepository(private val userDao: UserDao) : BaseRepository<User>(userDao) {
+class UserRepository @Inject constructor(
+    private val userDao: UserDao
+) : BaseRepository<User>(userDao) {
     
     // ==================== QUERY OPERATIONS ====================
     

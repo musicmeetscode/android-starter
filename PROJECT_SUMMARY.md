@@ -268,6 +268,32 @@ Helpers.logout(this)
 - **Volley Guide**: https://developer.android.com/training/volley
 - **Kotlin Guide**: https://kotlinlang.org/docs/
 
+## 🛠️ Tech Stack
+
+- **Architecture:** Clean Architecture + MVVM
+- **Dependency Injection:** Hilt
+- **UI:** Material Design 3 + ViewBinding
+- **State Management:** Coroutines Flow + UiState
+- **Data Layer:** Room (SQLite) + Repository Pattern
+- **Networking:** Retrofit + OkHttp + Gson (Legacy: Volley support)
+- **Local Storage:** DataStore (Preferences) + Room
+- **Image Loading:** Coil
+- **Logging:** Timber
+- **Background Work:** WorkManager
+- **Build:** Gradle KTS + Version Catalog
+
+## 🚀 Production-Ready Features
+
+- ✅ **Secure Authentication** with token management
+- ✅ **Offline Support** via Room caching
+- ✅ **Reactive UI** with StateFlow
+- ✅ **Dependency Injection** with Hilt
+- ✅ **Crash Reporting Ready** (Timber tree setup)
+- ✅ **Environment Switching** (Dev/Staging/Prod flavors)
+- ✅ **ProGuard Rules** attached
+- ✅ **Comprehensive Documentation**
+- ✅ **Setup Script** for easy renaming
+
 ## ✨ What Makes This Starter Special
 
 1. **Production-Ready Structure** - Professional organization

@@ -1,21 +1,45 @@
 # Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# By default, the flags in this file are appended to flags specified
+# in /files/default-proguard-rules.txt
+# You can edit the include path and order by changing the proguardFiles
+# directive in build.gradle.
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Retrofit
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Gson
+-keep class com.google.gson.** { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# API Models (Keep names for JSON serialization)
+-keep class ug.global.temp.network.** { *; }
+
+# Room
+-keep class androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-keepclassmembers class * {
+    @androidx.room.ColumnInfo <fields>;
+    @androidx.room.Embedded <fields>;
+    @androidx.room.Relation <fields>;
+    @androidx.room.ForeignKey <fields>;
+    @androidx.room.Ignore <fields>;
+    @androidx.room.PrimaryKey <fields>;
+    @androidx.room.Transaction <methods>;
+}
+
+# Hilt / Dagger
+-keep class com.google.dagger.hilt.** { *; }
+-keep class dagger.hilt.** { *; }
+-keep class javax.inject.** { *; }
+-keep class javax.annotation.** { *; }
+
+# Coroutines
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+-keepclassmembers class kotlinx.coroutines.CoroutineExceptionHandler {
+    <init>(...);
+}
+
+# Coil
+-keep class coil.** { *; }
