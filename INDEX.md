@@ -13,7 +13,8 @@ Welcome to the Android Starter App! This index will help you navigate all the do
 ### For Developers
 
 1. **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Code examples and API reference
-2. **[CHANGELOG.md](CHANGELOG.md)** - What's been added/changed
+2. **[DATABASE_GUIDE.md](DATABASE_GUIDE.md)** - Room database complete guide
+3. **[CHANGELOG.md](CHANGELOG.md)** - What's been added/changed
 
 ---
 

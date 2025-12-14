@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.core.content.edit
+import androidx.core.view.isVisible
 
 /**
  * Helpers - Common Android utility functions
@@ -136,7 +138,7 @@ object Helpers {
      * Save boolean to SharedPreferences
      */
     fun saveBoolean(context: Context, key: String, value: Boolean) {
-        getPreferences(context).edit().putBoolean(key, value).apply()
+        getPreferences(context).edit { putBoolean(key, value) }
     }
     
     /**
@@ -150,7 +152,7 @@ object Helpers {
      * Save int to SharedPreferences
      */
     fun saveInt(context: Context, key: String, value: Int) {
-        getPreferences(context).edit().putInt(key, value).apply()
+        getPreferences(context).edit { putInt(key, value) }
     }
     
     /**
@@ -164,7 +166,7 @@ object Helpers {
      * Clear all SharedPreferences
      */
     fun clearPreferences(context: Context) {
-        getPreferences(context).edit().clear().apply()
+        getPreferences(context).edit { clear() }
     }
     
     /**
@@ -182,19 +184,12 @@ object Helpers {
      */
     fun isNetworkAvailable(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val network = connectivityManager.activeNetwork ?: return false
-            val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
-            
-            return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
-                   capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
-        } else {
-            @Suppress("DEPRECATION")
-            val networkInfo = connectivityManager.activeNetworkInfo
-            @Suppress("DEPRECATION")
-            return networkInfo != null && networkInfo.isConnected
-        }
+
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+               capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
     }
     
     /**
@@ -347,7 +342,7 @@ object Helpers {
      * Toggle view visibility
      */
     fun toggleVisibility(view: View) {
-        view.visibility = if (view.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+        view.visibility = if (view.isVisible) View.GONE else View.VISIBLE
     }
     
     
@@ -389,5 +384,23 @@ object Helpers {
         removeKey(context, URLS.AppConfig.KEY_USER_ID)
         removeKey(context, URLS.AppConfig.KEY_USER_EMAIL)
         saveLoginState(context, false)
+    }
+    
+    
+    // ==================== DATABASE HELPERS ====================
+    
+    /**
+     * Get database instance
+     */
+    fun getDatabase(context: Context): ug.global.temp.db.database.AppDatabase {
+        return ug.global.temp.db.database.AppDatabase.getInstance(context)
+    }
+    
+    /**
+     * Get UserRepository instance
+     */
+    fun getUserRepository(context: Context): ug.global.temp.db.repository.UserRepository {
+        val db = getDatabase(context)
+        return ug.global.temp.db.repository.UserRepository(db.userDao())
     }
 }
