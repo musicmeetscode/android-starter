@@ -1,4 +1,4 @@
-package ug.global.parkingticketing.util
+package ug.global.temp.util
 
 import android.content.Context
 import android.graphics.Bitmap

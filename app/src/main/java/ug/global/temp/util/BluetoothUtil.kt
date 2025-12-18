@@ -1,4 +1,4 @@
-package ug.global.parkingticketing.util
+package ug.global.temp.util
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice

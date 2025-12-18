@@ -1,4 +1,4 @@
-package ug.global.parkingticketing.util
+package ug.global.temp.util
 
 import android.graphics.Bitmap
 import com.google.zxing.BarcodeFormat

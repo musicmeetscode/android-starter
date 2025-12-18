@@ -1,4 +1,4 @@
-package ug.global.parkingticketing.util
+package ug.global.temp.util
 
 import android.graphics.Bitmap
 import androidx.core.view.MotionEventCompat
@@ -9,6 +9,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import java.lang.Byte.MIN_VALUE
+import java.lang.Double
 import java.util.Hashtable
 import java.util.Locale
 
@@ -274,12 +275,12 @@ object BytesUtil {
 
     private fun RGB2Gray(r: Int, g: Int, b: Int): Byte {
         val d = r.toDouble()
-        java.lang.Double.isNaN(d)
+        Double.isNaN(d)
         val d2 = g.toDouble()
-        java.lang.Double.isNaN(d2)
+        Double.isNaN(d2)
         val d3 = d * 0.299 + d2 * 0.587
         val d4 = b.toDouble()
-        java.lang.Double.isNaN(d4)
+        Double.isNaN(d4)
         return if ((d3 + d4 * 0.114).toInt() < 200) 1.toByte() else 0
     }
 

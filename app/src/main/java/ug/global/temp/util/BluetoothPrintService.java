@@ -1,4 +1,4 @@
-package ug.global.parkingticketing.util;
+package ug.global.temp.util;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
